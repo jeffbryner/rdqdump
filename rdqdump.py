@@ -17,12 +17,12 @@
 
 import os
 import sys
+import io
 from optparse import OptionParser
-from StringIO import StringIO
 import json
 
 def readChunk(data,start,end):
-    data.seek(start)
+    data.seek(int(start))
     readdata=data.read(end)
     return readdata
 
@@ -87,7 +87,7 @@ def hexdump(xs, group_size=4, byte_separator=' ', group_separator='-', printable
     return s
 
 def convert_hex(string):
-    return ''.join([hex(ord(character))[2:].upper().zfill(2) \
+    return ''.join([hex(character)[2:].upper().zfill(2) \
                      for character in string])
 
 if __name__ == '__main__':
@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
 
     if os.path.exists(options.input):
-        src=file(options.input,'rb')
+        src=open(options.input,'rb')
         #if the file is smaller than our chunksize, reset.
         options.chunk=min(os.path.getsize(options.input),options.chunk)
     else:
@@ -177,7 +177,7 @@ if __name__ == '__main__':
                 print(hexdump(data, byte_separator='', group_size=2, group_separator=' ', printable_separator='  ', address=printAddress, line_size=16,address_format='%07X'))
             count+=1
 
-        if options.count <> 0 and options.count<=count:
+        if options.count != 0 and options.count<=count:
             sys.exit()
         else:
 
