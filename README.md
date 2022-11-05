@@ -12,9 +12,11 @@ I recovered was json, if you have other data types, this may not work without so
 
 Usage: 
 
-$ ./rdqdump.py --help
+`$ ./rdqdump.py --help`
+
 Usage: rdqdump.py [options]
 
+```
 Options:
 -h, --help   show this help message and exit
 -b BYTES     number of bytes to show per line
@@ -27,9 +29,12 @@ Options:
 -d, --debug  turn on debugging output
 -z, --zero   when printing output, count from zero rather than position hit
              was found
+```
 
 sample run to print the first 2 records found: 
-$ ./rdqdump.py -f 383506.rdq -c2
+
+`$ ./rdqdump.py -f 383506.rdq -c2`
 
 print all records:
-$ ./rdqdump.py -f 383506.rdq -c0
+
+`$ ./rdqdump.py -f 383506.rdq -c0`
